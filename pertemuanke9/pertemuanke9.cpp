@@ -61,10 +61,22 @@ void addNode() {
         }
         else
         {
-            // If the previous is still NULL, it means newNode is now the first node
+            // If teh previous is still NULL, it means newNode is now the first node
             START = newNode;
         }
     }
+}
+
+bool search(int rollNo, Node** previous, Node** current)
+{
+    *previous = NULL;
+    *current = START;
+    while (*current != NULL && (*current)->noMhs != rollNo)
+    {
+        *previous = *current;
+        *current = (*current)->next;
+    }
+    return (*current != NULL);
 }
 
 int main()
